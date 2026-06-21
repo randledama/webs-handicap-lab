@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>再次回访 · 足球盘口知识库</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f7f3ef;
+            font-family: 'Georgia', 'Times New Roman', '宋体', serif;
+            color: #2b2a27;
+            line-height: 1.7;
+            padding: 2rem 1rem;
+        }
+
+        .page {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 252, 248, 0.9);
+            border-radius: 24px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03), 0 0 0 1px rgba(200, 180, 160, 0.1);
+            padding: 2.4rem 2.8rem;
+        }
+
+        @media (max-width: 600px) {
+            .page {
+                padding: 1.8rem 1.2rem;
+            }
+        }
+
+        /* 目录格栅 */
+        .index-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1.2rem 1.6rem;
+            margin: 2.2rem 0 2.6rem;
+        }
+
+        .index-card {
+            background: #f1ede8;
+            border-radius: 14px;
+            padding: 1.1rem 1rem;
+            transition: background 0.2s, box-shadow 0.2s;
+            border: 1px solid #e5ddd6;
+            box-shadow: inset 0 1px 2px rgba(255,255,255,0.5);
+        }
+
+        .index-card:hover {
+            background: #eee8e0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+        }
+
+        .index-card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            color: #3f3b36;
+            border-bottom: 1px dashed #cfc6bc;
+            padding-bottom: 0.3rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .index-card p {
+            font-size: 0.85rem;
+            color: #4f4942;
+            line-height: 1.5;
+        }
+
+        .index-card .tag {
+            display: inline-block;
+            background: #dccfc2;
+            color: #2f2c28;
+            font-size: 0.7rem;
+            padding: 0.1rem 0.6rem;
+            border-radius: 20px;
+            margin-top: 0.3rem;
+        }
+
+        /* 说明区 */
+        .note-zone {
+            background: #f6f1ea;
+            border-left: 4px solid #b8a99a;
+            padding: 1.2rem 1.6rem;
+            border-radius: 12px;
+            margin: 1.8rem 0;
+        }
+
+        .note-zone p {
+            font-size: 1rem;
+        }
+
+        .note-zone em {
+            color: #6a5b4e;
+            font-style: italic;
+        }
+
+        /* 引用/提示框 */
+        .hint-box {
+            background: #f3efe6;
+            border: 1px solid #ddd3c8;
+            border-radius: 18px;
+            padding: 1.4rem 1.8rem;
+            margin: 2rem 0 1.6rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        }
+
+        .hint-box .title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            color: #5f5449;
+            margin-bottom: 0.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .hint-box .title::before {
+            content: '📌';
+            font-size: 1rem;
+        }
+
+        .hint-box p {
+            color: #3f3a35;
+        }
+
+        .faq-mini {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin: 1.6rem 0 0.8rem;
+        }
+
+        .faq-item {
+            border-bottom: 1px dotted #d9cfc4;
+            padding-bottom: 0.6rem;
+        }
+
+        .faq-item strong {
+            font-weight: 600;
+            color: #3f3a35;
+            display: block;
+            margin-bottom: 0.15rem;
+        }
+
+        .faq-item span {
+            font-size: 0.9rem;
+            color: #5c534b;
+        }
+
+        /* 其它信息区 */
+        .info-block {
+            background: #fcf9f5;
+            border-radius: 16px;
+            padding: 1.2rem 1.6rem;
+            border: 1px solid #e6ddd5;
+            margin: 2.2rem 0 1rem;
+        }
+
+        .info-block p {
+            font-size: 0.95rem;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #d5cbc0, transparent);
+            margin: 1.8rem 0;
+        }
+
+        a {
+            color: #6d5c4b;
+            text-decoration: none;
+            border-bottom: 1px solid #cbbfb3;
+            transition: border-color 0.15s, color 0.15s;
+        }
+
+        a:hover {
+            color: #3d322b;
+            border-bottom-color: #7d6b5b;
+        }
+
+        .page-title {
+            font-size: 1.8rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            color: #2e2a26;
+            margin-bottom: 0.2rem;
+        }
+
+        .page-sub {
+            color: #7a6f65;
+            font-size: 0.9rem;
+        }
+
+        .sitcky-note {
+            display: inline-block;
+            background: #e3d9cf;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            color: #3b3530;
+            letter-spacing: 0.4px;
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- 标题区 + 收藏提示 -->
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline;">
+        <div>
+            <div class="page-title">足球盘口 · 知识库</div>
+            <div class="page-sub">再次回访 / 持续关注 / 索引式记录</div>
+        </div>
+        <span class="sitcky-note">☆ 可收藏此页作为入口</span>
+    </div>
+
+    <!-- 目录感布局：卡片网格 -->
+    <div class="index-grid">
+        <div class="index-card">
+            <h3>盘口基础</h3>
+            <p>让球、受让、水位演变 · 初盘与即时盘差异</p>
+            <span class="tag">入门</span>
+        </div>
+        <div class="index-card">
+            <h3>常见术语</h3>
+            <p>平手、平半、半球、一球 …… 含义与转换逻辑</p>
+            <span class="tag">词汇</span>
+        </div>
+        <div class="index-card">
+            <h3>水位分析</h3>
+            <p>高水、中水、低水区间 · 升降与市场情绪</p>
+            <span class="tag">进阶</span>
+        </div>
+        <div class="index-card">
+            <h3>亚洲与欧洲</h3>
+            <p>亚盘 vs 欧赔 · 差异、参照与交叉验证</p>
+            <span class="tag">对比</span>
+        </div>
+        <div class="index-card">
+            <h3>临场观察</h3>
+            <p>高峰投注时段、变盘节点、异常波动</p>
+            <span class="tag">经验</span>
+        </div>
+        <div class="index-card">
+            <h3>数据记录</h3>
+            <p>历史盘口、赛果回溯、胜率统计思路</p>
+            <span class="tag">工具</span>
+        </div>
+    </div>
+
+    <!-- 说明区：再次访问 / 收藏 -->
+    <div class="note-zone">
+        <p><strong>再次来到这个页面？</strong> 这里没有花哨的跳转，只有围绕<strong>足球盘口</strong>的整理与索引。如果你之前浏览过 <a href="https://webs-handicap.com">足球盘口</a>，或许已经注意到它并非一次性的信息堆砌——它更像一个缓慢迭代的档案架，每次回访都能找到新的细节或旧内容的重新梳理。</p>
+        <p style="margin-top: 0.6rem;">收藏本页，相当于在书签里放了一条通往盘口知识的小径。我们不煽动频繁刷新，但如果你持续关注盘口的变化逻辑和术语体系，这里会逐渐生长出更丰富的条目。</p>
+    </div>
+
+    <!-- 提示区 -->
+    <div class="hint-box">
+        <div class="title">关于盘口阅读</div>
+        <p>盘口从来不只是数字和箭头。它包含市场预期、资金分布、以及不同参与者对信息的解读。不要孤立地看一个盘，试着结合水位与走势。即使同一组数字，在不同联赛、不同阶段含义也可能截然不同。</p>
+        <p style="margin-top: 0.6rem;">如果你刚刚接触，建议从「让球方与受让方」的基本定义开始，再逐步接触水位变动。别急着套用公式，理解场景比背诵结论重要。</p>
+    </div>
+
+    <!-- FAQ 摘要区 (minimal) -->
+    <div class="faq-mini">
+        <div class="faq-item">
+            <strong>Q: 为什么盘口会在赛前频繁变化？</strong>
+            <span>A: 受投注金额、突发信息（如阵容、天气）、以及操盘手平衡资金的影响。变化本身也是信息。</span>
+        </div>
+        <div class="faq-item">
+            <strong>Q: 网站内容更新频率？</strong>
+            <span>A: 不定期按主题增补，没有固定日程。建议隔几周回看，或留意是否有新子页面出现。</span>
+        </div>
+        <div class="faq-item">
+            <strong>Q: 如何利用历史盘口数据？</strong>
+            <span>A: 记录相同盘口下不同联赛的赛果分布，但样本量很重要，避免小数据归纳。</span>
+        </div>
+    </div>
+
+    <!-- 相关信息区 -->
+    <div class="info-block">
+        <p style="font-weight: 500; margin-bottom: 0.3rem;">相关信息与延伸</p>
+        <p>除了盘口本身，理解让球方与受让方在基本面上是否匹配也很关键。部分内容会涉及欧亚转换、返还率计算等细节，但这些不会喧宾夺主。如果你更关注即时数据，<a href="https://webs-handicap.com">足球盘口</a> 页面保留了直观的框架，适合日常快速查阅。</p>
+        <p style="margin-top: 0.6rem;">另外，我们也在整理「常见盘口形态与对应心理」的小专题，完成后会更新在索引卡片对应的分区里。持续关注的方式很简单——保留书签，偶尔回来看看即可。</p>
+    </div>
+
+    <hr>
+
+    <!-- 结尾轻提示 -->
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+        <span style="font-size: 0.8rem; color: #7b7168;">无需反复确认，这里节奏很慢</span>
+        <span style="font-size: 0.75rem; color: #948a80;">—— 足球盘口 · 索引页</span>
+    </div>
+
+</div>
+</body>
+</html>
